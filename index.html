@@ -14,22 +14,74 @@
 		</main>
 		<script>
 
-		var temp_json = [{"id":283,"location":"penthouse","device":"temp","value":"31.58","ts":1562272000},{"id":282,"location":"penthouse","device":"temp","value":"31.58","ts":1562271696},{"id":281,"location":"penthouse","device":"temp","value":"31.58","ts":1562271392},{"id":280,"location":"penthouse","device":"temp","value":"31.58","ts":1562271088},{"id":279,"location":"penthouse","device":"temp","value":"31.58","ts":1562270785},{"id":278,"location":"penthouse","device":"temp","value":"31.90","ts":1562270481},{"id":277,"location":"penthouse","device":"temp","value":"31.26","ts":1562270177},{"id":276,"location":"penthouse","device":"temp","value":"30.94","ts":1562269873},{"id":275,"location":"penthouse","device":"temp","value":"30.94","ts":1562269570},{"id":274,"location":"penthouse","device":"temp","value":"30.29","ts":1562269266},{"id":273,"location":"penthouse","device":"temp","value":"30.94","ts":1562268962},{"id":272,"location":"penthouse","device":"temp","value":"31.26","ts":1562268658},{"id":271,"location":"penthouse","device":"temp","value":"31.26","ts":1562268355},{"id":270,"location":"penthouse","device":"temp","value":"30.94","ts":1562268051},{"id":269,"location":"penthouse","device":"temp","value":"31.90","ts":1562267747},{"id":268,"location":"penthouse","device":"temp","value":"31.90","ts":1562267443},{"id":267,"location":"penthouse","device":"temp","value":"31.58","ts":1562267140},{"id":266,"location":"penthouse","device":"temp","value":"31.58","ts":1562266836},{"id":265,"location":"penthouse","device":"temp","value":"32.23","ts":1562266532},{"id":264,"location":"penthouse","device":"temp","value":"32.87","ts":1562266228},{"id":263,"location":"penthouse","device":"temp","value":"31.90","ts":1562265925},{"id":262,"location":"penthouse","device":"temp","value":"31.90","ts":1562265621},{"id":261,"location":"penthouse","device":"temp","value":"31.90","ts":1562265317},{"id":260,"location":"penthouse","device":"temp","value":"33.19","ts":1562265013},{"id":259,"location":"penthouse","device":"temp","value":"32.23","ts":1562264710},{"id":258,"location":"penthouse","device":"temp","value":"32.23","ts":1562264406},{"id":257,"location":"penthouse","device":"temp","value":"32.55","ts":1562264102},{"id":256,"location":"penthouse","device":"temp","value":"33.84","ts":1562263798},{"id":255,"location":"penthouse","device":"temp","value":"32.87","ts":1562263495},{"id":254,"location":"penthouse","device":"temp","value":"32.23","ts":1562263191},{"id":253,"location":"penthouse","device":"temp","value":"31.90","ts":1562262887},{"id":252,"location":"penthouse","device":"temp","value":"31.90","ts":1562262583},{"id":251,"location":"penthouse","device":"temp","value":"33.52","ts":1562262280},{"id":250,"location":"penthouse","device":"temp","value":"33.19","ts":1562261976},{"id":249,"location":"penthouse","device":"temp","value":"32.87","ts":1562261672},{"id":248,"location":"penthouse","device":"temp","value":"33.19","ts":1562261369},{"id":247,"location":"penthouse","device":"temp","value":"32.87","ts":1562261065},{"id":246,"location":"penthouse","device":"temp","value":"33.19","ts":1562260761},{"id":245,"location":"penthouse","device":"temp","value":"33.52","ts":1562260457},{"id":244,"location":"penthouse","device":"temp","value":"33.52","ts":1562260154},{"id":243,"location":"penthouse","device":"temp","value":"33.19","ts":1562259850},{"id":242,"location":"penthouse","device":"temp","value":"33.84","ts":1562259546},{"id":241,"location":"penthouse","device":"temp","value":"33.52","ts":1562259243},{"id":240,"location":"penthouse","device":"temp","value":"33.84","ts":1562258939},{"id":239,"location":"penthouse","device":"temp","value":"33.84","ts":1562258635},{"id":238,"location":"penthouse","device":"temp","value":"33.84","ts":1562258332},{"id":237,"location":"penthouse","device":"temp","value":"34.16","ts":1562258028},{"id":236,"location":"penthouse","device":"temp","value":"33.84","ts":1562257724},{"id":235,"location":"penthouse","device":"temp","value":"33.19","ts":1562257420},{"id":234,"location":"penthouse","device":"temp","value":"33.84","ts":1562257117}];
+		var temp_json; /* = [{"id":283,"location":"penthouse","device":"temp","value":"31.58","ts":1562272000},{"id":282,"location":"penthouse","device":"temp","value":"31.58","ts":1562271696},{"id":281,"location":"penthouse","device":"temp","value":"31.58","ts":1562271392},{"id":280,"location":"penthouse","device":"temp","value":"31.58","ts":1562271088},{"id":279,"location":"penthouse","device":"temp","value":"31.58","ts":1562270785},{"id":278,"location":"penthouse","device":"temp","value":"31.90","ts":1562270481},{"id":277,"location":"penthouse","device":"temp","value":"31.26","ts":1562270177},{"id":276,"location":"penthouse","device":"temp","value":"30.94","ts":1562269873},{"id":275,"location":"penthouse","device":"temp","value":"30.94","ts":1562269570},{"id":274,"location":"penthouse","device":"temp","value":"30.29","ts":1562269266},{"id":273,"location":"penthouse","device":"temp","value":"30.94","ts":1562268962},{"id":272,"location":"penthouse","device":"temp","value":"31.26","ts":1562268658},{"id":271,"location":"penthouse","device":"temp","value":"31.26","ts":1562268355},{"id":270,"location":"penthouse","device":"temp","value":"30.94","ts":1562268051},{"id":269,"location":"penthouse","device":"temp","value":"31.90","ts":1562267747},{"id":268,"location":"penthouse","device":"temp","value":"31.90","ts":1562267443},{"id":267,"location":"penthouse","device":"temp","value":"31.58","ts":1562267140},{"id":266,"location":"penthouse","device":"temp","value":"31.58","ts":1562266836},{"id":265,"location":"penthouse","device":"temp","value":"32.23","ts":1562266532},{"id":264,"location":"penthouse","device":"temp","value":"32.87","ts":1562266228},{"id":263,"location":"penthouse","device":"temp","value":"31.90","ts":1562265925},{"id":262,"location":"penthouse","device":"temp","value":"31.90","ts":1562265621},{"id":261,"location":"penthouse","device":"temp","value":"31.90","ts":1562265317},{"id":260,"location":"penthouse","device":"temp","value":"33.19","ts":1562265013},{"id":259,"location":"penthouse","device":"temp","value":"32.23","ts":1562264710},{"id":258,"location":"penthouse","device":"temp","value":"32.23","ts":1562264406},{"id":257,"location":"penthouse","device":"temp","value":"32.55","ts":1562264102},{"id":256,"location":"penthouse","device":"temp","value":"33.84","ts":1562263798},{"id":255,"location":"penthouse","device":"temp","value":"32.87","ts":1562263495},{"id":254,"location":"penthouse","device":"temp","value":"32.23","ts":1562263191},{"id":253,"location":"penthouse","device":"temp","value":"31.90","ts":1562262887},{"id":252,"location":"penthouse","device":"temp","value":"31.90","ts":1562262583},{"id":251,"location":"penthouse","device":"temp","value":"33.52","ts":1562262280},{"id":250,"location":"penthouse","device":"temp","value":"33.19","ts":1562261976},{"id":249,"location":"penthouse","device":"temp","value":"32.87","ts":1562261672},{"id":248,"location":"penthouse","device":"temp","value":"33.19","ts":1562261369},{"id":247,"location":"penthouse","device":"temp","value":"32.87","ts":1562261065},{"id":246,"location":"penthouse","device":"temp","value":"33.19","ts":1562260761},{"id":245,"location":"penthouse","device":"temp","value":"33.52","ts":1562260457},{"id":244,"location":"penthouse","device":"temp","value":"33.52","ts":1562260154},{"id":243,"location":"penthouse","device":"temp","value":"33.19","ts":1562259850},{"id":242,"location":"penthouse","device":"temp","value":"33.84","ts":1562259546},{"id":241,"location":"penthouse","device":"temp","value":"33.52","ts":1562259243},{"id":240,"location":"penthouse","device":"temp","value":"33.84","ts":1562258939},{"id":239,"location":"penthouse","device":"temp","value":"33.84","ts":1562258635},{"id":238,"location":"penthouse","device":"temp","value":"33.84","ts":1562258332},{"id":237,"location":"penthouse","device":"temp","value":"34.16","ts":1562258028},{"id":236,"location":"penthouse","device":"temp","value":"33.84","ts":1562257724},{"id":235,"location":"penthouse","device":"temp","value":"33.19","ts":1562257420},{"id":234,"location":"penthouse","device":"temp","value":"33.84","ts":1562257117}];*/
 
-		var points = temp_json.map(function(e) {
-			return {
-				x: new Date(e.ts*1000),
-				y: e.value
-			};
+		var points = null;
+
+
+		function getCORS(url, success) {
+			var xhr = new XMLHttpRequest();
+			if (!('withCredentials' in xhr)) xhr = new XDomainRequest(); // fix IE8/9
+			xhr.open('GET', url);
+			xhr.onload = success;
+			xhr.send();
+			return xhr;
+		}
+
+		// example request
+		getCORS('https://mqtt.designedbycave.co.uk/temps/', function(request){
+			var data = request.currentTarget.response || request.target.responseText;
+						
+			// JSON data in form of a JavaScript object
+			temp_json = data;
+
+			points = temp_json.map(function(e) {
+				return {
+					x: new Date(e.ts*1000),
+					y: e.value
+				};
+			});
+			chart.data.datasets[0].data = points;
+			chart.update();
+			console.log(temp_json);
+
 		});
+
+
+
+
+
+/*
+
+
+		// define a callback function, which accepts the returned JSON data as its only argument
+		function response(data) {
+			// JSON data in form of a JavaScript object
+			temp_json = data;
+
+			points = temp_json.map(function(e) {
+				return {
+					x: new Date(e.ts*1000),
+					y: e.value
+				};
+			});
+			chart.data.datasets[0].data = points;
+			chart.update();
+			console.log(temp_json);
+		}
+
+		// create a script tag with the external request URL
+		// include "response" as value of the GET param "callback" in the URL
+		var script = document.createElement('script');
+		script.src = 'https://mqtt.designedbycave.co.uk/temps/?callback=response';
+		document.body.appendChild(script);*/
 
 		var ctx = document.getElementById('myChart').getContext('2d');
 		var config = {
 			type: 'scatter',
 			data: {
 				datasets: [{
-					label: 'Graph Line',
-					data: points,
+					label: 'Temp Line',
 					fill: false,
 					pointRadius: 4,
 					pointBorderWidth: 0,
