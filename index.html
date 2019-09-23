@@ -22,8 +22,8 @@
 		getCORS('https://mqtt.designedbycave.co.uk/temps/', function(request){
 			var data = request.currentTarget.response || request.target.responseText;
 						
-			// Get first 50 temperature pairs
-			temp_json = JSON.parse(data).slice(0,100);
+			// Get temperature pairs
+			temp_json = JSON.parse(data);
 
 			// Create map function to get x,y values from temperature and timestamp
 			var points = temp_json.map(function(e) {
@@ -85,7 +85,7 @@
 					xAxes: [{
 						type: 'time',
 						time: {
-							unit: 'hour'
+                     unit: 'hour'
 						},
 						gridLines: {
 							color: 'rgba(255,255,255,0.5)',
