@@ -5,10 +5,8 @@ var temp_json;
 // Create graph with appropriate formatting
 var ctx = document.getElementById('myChart').getContext('2d');
 
-
 // Initiate chart
 var chart = new Chart(ctx, config);
-
 
 // Fetch data
 function load_data(display_date){
@@ -33,15 +31,6 @@ function load_data(display_date){
    });
 }
 
-// CORS function from https://plainjs.com/javascript/ajax/making-cors-ajax-get-requests-54/
-function getCORS(url, success) {
-   var xhr = new XMLHttpRequest();
-   if (!('withCredentials' in xhr)) xhr = new XDomainRequest(); // fix IE8/9
-   xhr.open('GET', url);
-   xhr.onload = success;
-   xhr.send();
-   return xhr;
-}
 
 // Reference for today's date
 var display_date = new Date();
@@ -51,8 +40,8 @@ set_date_label(display_date);
 load_data(display_date);
 
 
-// event handler function
-function handler(e) {
+// keydown handler function
+keydown_handler = function(e){
    var key = window.event ? e.keyCode : e.which;
    if(key == 37){
       // back a day
@@ -67,6 +56,11 @@ function handler(e) {
       set_date_label(display_date);
       load_data(display_date);
    }
+};
+if (document.attachEvent){
+   document.attachEvent('onkeydown', keydown_handler);
+}else{
+    document.addEventListener('keydown', keydown_handler);
 }
 
 function set_date_label(input_date){
@@ -100,7 +94,3 @@ function set_date_label(input_date){
 function getOrdinalNum(n) {
    return n + (n > 0 ? ['th', 'st', 'nd', 'rd'][(n > 3 && n < 21) || n % 10 > 3 ? 0 : n % 10] : '');
 }
-
-// attach handler to the keydown event of the document
-if (document.attachEvent) document.attachEvent('onkeydown', handler);
-else document.addEventListener('keydown', handler);
