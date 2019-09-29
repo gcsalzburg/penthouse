@@ -8,3 +8,10 @@ function getCORS(url, success) {
    xhr.send();
    return xhr;
 }
+
+// Adapted from: https://www.freecodecamp.org/news/three-ways-to-title-case-a-sentence-in-javascript-676a9175eb27/
+String.prototype.toTitlecase = function() {
+   return this.toLowerCase().split(' ').map(function(word) {
+      return word.replace(word[0], word[0].toUpperCase());
+    }).join(' ');
+}
