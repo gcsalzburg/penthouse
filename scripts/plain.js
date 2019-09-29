@@ -17,7 +17,7 @@ String.prototype.toTitlecase = function() {
 }
 
 
-// Gets the timestamps into UTC time to draw graph correctly.
+// Converts a timestamp into UTC time
 // From: https://stackoverflow.com/a/14006555/10240581
 function convertDateToUTC(date) { 
    return new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(), date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds()); 
