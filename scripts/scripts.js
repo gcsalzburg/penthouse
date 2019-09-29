@@ -12,40 +12,42 @@ var chart = new Chart(ctx, config);
 function load_new_data(display_date){
 
    getCORS('https://mqtt.designedbycave.co.uk/temps/'+display_date.toISOString().substr(0,10), function(request){
-      var data = request.currentTarget.response || request.target.responseText;
+
+      // Get response as JSON
+      var response_data = JSON.parse(request.currentTarget.response || request.target.responseText);
 
       // Clear existing data
       chart.data.datasets = [];
                
-      // Get temperature data into json
-      temp_json = JSON.parse(data);
+      // Temperature data object
+      temp_data = response_data.data;
 
       // Iterate over each device
-      for(var device of Object.keys(temp_json)) {
+      for(var device of Object.keys(temp_data)) {
          // Create map function to get x,y values from temperature and timestamp
-         var points = temp_json[device].map(function(e) {
+         var points = temp_data[device].map(function(e) {
             return {
                x: new Date(e.ts*1000),
                y: e.value
             };
          });
+
+         // Cheeky copy of object the budget way https://stackoverflow.com/a/10869248/10240581
+         var new_dataset = JSON.parse(JSON.stringify(dataset_template));
          
-         var new_dataset = {
-            label: device.replace("-"," "),
-            fill: false,
-            pointRadius: 2,
-            pointBorderWidth: 0,
-            pointBackgroundColor: 'rgba(255,255,255,1)',
-            pointStyle: point_styles[0],
-            showLine: true,
-            borderColor: 'rgba(255,255,255,1)',
-            borderWidth: 2,
-            cubicInterpolationMode: 'monotone',
-            data: points
-         };
-         console.log(new_dataset.label.toTitlecase());
+         // Add new properties
+         new_dataset.label       = device.replace("-"," ").toTitlecase(),
+         new_dataset.pointStyle  = point_styles[0];
+         new_dataset.data        = points;
+
+         // Add data to graph
          chart.data.datasets.push(new_dataset);
       };
+
+      // Set range for graph (in case ends are missing)
+      console.log(response_data.range);
+      chart.config.options.scales.xAxes[0].time.min = convertDateToUTC(new Date(response_data.range[0]*1000));
+      chart.config.options.scales.xAxes[0].time.max = convertDateToUTC(new Date(response_data.range[1]*1000));
 
       // Update graph with temperature data
       chart.update();
