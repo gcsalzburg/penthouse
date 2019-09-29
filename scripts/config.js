@@ -1,29 +1,11 @@
 var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
+var point_styles = ['circle', 'triangle', 'rect', 'star'];
+
 var config = {
    type: 'scatter',
    data: {
-      datasets: [{
-         label: 'Living Space',
-         fill: false,
-         pointRadius: 2,
-         pointBorderWidth: 0,
-         pointBackgroundColor: 'rgba(255,255,255,1)',
-         showLine: true,
-         borderColor: 'rgba(255,255,255,1)',
-         borderWidth: 2,
-         cubicInterpolationMode: 'monotone',
-      },{
-         label: 'Fridge',
-         fill: false,
-         pointRadius: 2,
-         pointBorderWidth: 0,
-         pointBackgroundColor: 'rgba(255,255,255,1)',
-         showLine: true,
-         borderColor: 'rgba(255,255,255,1)',
-         borderWidth: 2,
-         cubicInterpolationMode: 'monotone',
-      }]
+      datasets: []
    },
    options: {
       animation: {

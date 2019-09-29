@@ -13,25 +13,39 @@ function load_new_data(display_date){
 
    getCORS('https://mqtt.designedbycave.co.uk/temps/'+display_date.toISOString().substr(0,10), function(request){
       var data = request.currentTarget.response || request.target.responseText;
+
+      // Clear existing data
+      chart.data.datasets = [];
                
-      // Get temperature pairs
+      // Get temperature data into json
       temp_json = JSON.parse(data);
-      // Create map function to get x,y values from temperature and timestamp
-      var points1 = temp_json["living-space"].map(function(e) {
-         return {
-            x: new Date(e.ts*1000),
-            y: e.value
+
+      // Iterate over each device
+      for(var device of Object.keys(temp_json)) {
+         // Create map function to get x,y values from temperature and timestamp
+         var points = temp_json[device].map(function(e) {
+            return {
+               x: new Date(e.ts*1000),
+               y: e.value
+            };
+         });
+         
+         var new_dataset = {
+            label: device.replace("-"," "),
+            fill: false,
+            pointRadius: 2,
+            pointBorderWidth: 0,
+            pointBackgroundColor: 'rgba(255,255,255,1)',
+            pointStyle: point_styles[0],
+            showLine: true,
+            borderColor: 'rgba(255,255,255,1)',
+            borderWidth: 2,
+            cubicInterpolationMode: 'monotone',
+            data: points
          };
-      });
-      chart.data.datasets[0].data = points1;
-      
-      var points2 = temp_json["fridge"].map(function(e) {
-         return {
-            x: new Date(e.ts*1000),
-            y: e.value
-         };
-      });
-      chart.data.datasets[1].data = points2;
+         console.log(new_dataset.label.toTitlecase());
+         chart.data.datasets.push(new_dataset);
+      };
 
       // Update graph with temperature data
       chart.update();
