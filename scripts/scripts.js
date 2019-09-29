@@ -46,7 +46,6 @@ function load_new_data(display_date){
       };
 
       // Set range for graph (in case ends are missing)
-      console.log(response_data.range);
       chart.config.options.scales.xAxes[0].time.min = new Date(response_data.range[0]*1000);
       chart.config.options.scales.xAxes[0].time.max = new Date(response_data.range[1]*1000);
 
