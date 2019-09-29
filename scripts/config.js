@@ -35,7 +35,7 @@ var config = {
                fontFamily: 'Open Sans',
                fontSize: 16,
                padding: 15,
-               callback: function(value, index, values){
+               callback: function(value){
                   return value + '°';
                  },
             },
@@ -60,6 +60,15 @@ var config = {
                fontFamily: 'Open Sans',
                fontSize: 16,
                padding: 15,
+               callback: function(value) { 
+                  if(value.toUpperCase() == "12AM"){
+                     return "Midnight";
+                  }else if(value.toUpperCase() == "12PM"){
+                     return "Noon";
+                  }else{
+                     return value; 
+                  }
+              },
             }
          }],
       },
