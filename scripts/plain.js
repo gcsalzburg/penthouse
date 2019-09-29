@@ -15,3 +15,10 @@ String.prototype.toTitlecase = function() {
       return word.replace(word[0], word[0].toUpperCase());
     }).join(' ');
 }
+
+
+// Gets the timestamps into UTC time to draw graph correctly.
+// From: https://stackoverflow.com/a/14006555/10240581
+function convertDateToUTC(date) { 
+   return new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(), date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds()); 
+}
