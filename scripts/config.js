@@ -72,5 +72,21 @@ var config = {
             }
          }],
       },
+      tooltips: {
+         xPadding: 10,
+         yPadding: 10,
+         caretSize: 8,
+         displayColors: false,
+         callbacks: {
+            label: function(tooltipItem, data) {
+                return data.datasets[tooltipItem.datasetIndex].label + ": " + tooltipItem.yLabel + "°";
+            },
+            afterBody: function(tooltipItem, data) {
+               // Add date in a second row of text
+               // For more rows, add more items to this array
+               return [tooltipItem[0].xLabel];
+           }
+        }
+      }
    }
 };
