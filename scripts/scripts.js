@@ -27,6 +27,7 @@ function load_new_data(display_date){
          // Create map function to get x,y values from temperature and timestamp
          var points = temp_data[device].map(function(e) {
             return {
+             //  x: convertDateToUTC(new Date(e.ts*1000)),
                x: new Date(e.ts*1000),
                y: e.value
             };
@@ -46,8 +47,8 @@ function load_new_data(display_date){
 
       // Set range for graph (in case ends are missing)
       console.log(response_data.range);
-      chart.config.options.scales.xAxes[0].time.min = convertDateToUTC(new Date(response_data.range[0]*1000));
-      chart.config.options.scales.xAxes[0].time.max = convertDateToUTC(new Date(response_data.range[1]*1000));
+      chart.config.options.scales.xAxes[0].time.min = new Date(response_data.range[0]*1000);
+      chart.config.options.scales.xAxes[0].time.max = new Date(response_data.range[1]*1000);
 
       // Update graph with temperature data
       chart.update();
