@@ -16,17 +16,24 @@ function load_new_data(display_date){
                
       // Get temperature pairs
       temp_json = JSON.parse(data);
-
       // Create map function to get x,y values from temperature and timestamp
-      var points = temp_json.map(function(e) {
+      var points1 = temp_json["living-space"].map(function(e) {
          return {
             x: new Date(e.ts*1000),
             y: e.value
          };
       });
+      chart.data.datasets[0].data = points1;
+      
+      var points2 = temp_json["fridge"].map(function(e) {
+         return {
+            x: new Date(e.ts*1000),
+            y: e.value
+         };
+      });
+      chart.data.datasets[1].data = points2;
 
       // Update graph with temperature data
-      chart.data.datasets[0].data = points;
       chart.update();
       
       // Draw new label in background

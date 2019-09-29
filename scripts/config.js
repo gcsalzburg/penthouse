@@ -4,7 +4,17 @@ var config = {
    type: 'scatter',
    data: {
       datasets: [{
-         label: 'Temp Line',
+         label: 'Living Space',
+         fill: false,
+         pointRadius: 2,
+         pointBorderWidth: 0,
+         pointBackgroundColor: 'rgba(255,255,255,1)',
+         showLine: true,
+         borderColor: 'rgba(255,255,255,1)',
+         borderWidth: 2,
+         cubicInterpolationMode: 'monotone',
+      },{
+         label: 'Fridge',
          fill: false,
          pointRadius: 2,
          pointBorderWidth: 0,
@@ -26,7 +36,7 @@ var config = {
          yAxes: [{
             type: 'linear',
             ticks: {
-               suggestedMin: 16,
+               suggestedMin: 0,
                suggestedMax: 40,
                fontColor: 'rgba(255,255,255,0.7)',
                fontFamily: 'Open Sans',
