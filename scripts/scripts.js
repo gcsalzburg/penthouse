@@ -29,7 +29,7 @@ function load_new_data(display_date){
             return {
              //  x: convertDateToUTC(new Date(e.ts*1000)),
                x: new Date(e.ts*1000),
-               y: e.value
+               y: e.message
             };
          });
 
